@@ -1,6 +1,6 @@
 const { MessageAttachment } = require('discord.js');
 const fs = require('fs');
-const { registerFont, createCanvas, loadImage } = require('canvas');
+// const { registerFont, createCanvas, loadImage } = require('canvas');
 
 const colors = ['#00FFFF', '#FF00FF', '#fff', '#FFFF00', '#00FF00', '#FFA500',];
 
@@ -78,114 +78,114 @@ async function deleteMessages(channel, amount) {
 }
 
 
-async function constructImageAndSend(memberObj, channel, upper = "Welcome", tagline = "Have a great journey!") {
+// async function constructImageAndSend(memberObj, channel, upper = "Welcome", tagline = "Have a great journey!") {
 
-    // Retrieves all banners from wc-banner folder
-    const banners = fs.readdirSync('./assets/images/wc-banner')
-        .filter(file => file.endsWith('.png'));
-    // select a banner randomly
-    const selectedImage = banners[Math.floor(Math.random() * banners.length)];
+//     // Retrieves all banners from wc-banner folder
+//     const banners = fs.readdirSync('./assets/images/wc-banner')
+//         .filter(file => file.endsWith('.png'));
+//     // select a banner randomly
+//     const selectedImage = banners[Math.floor(Math.random() * banners.length)];
 
-    const img = loadImage(`./assets/images/wc-banner/${selectedImage}`).then(image => {
+//     const img = loadImage(`./assets/images/wc-banner/${selectedImage}`).then(image => {
 
-        //default avatar
-        let avatarURL = 'https://siteforsuccess.com/JS/pcn_images/discord.jpg';
-        if (memberObj.avatar)
-            // get user avatar
-            avatarURL = memberObj.avatarURL({ 'format': 'png', 'size': 256 });
+//         //default avatar
+//         let avatarURL = 'https://siteforsuccess.com/JS/pcn_images/discord.jpg';
+//         if (memberObj.avatar)
+//             // get user avatar
+//             avatarURL = memberObj.avatarURL({ 'format': 'png', 'size': 256 });
 
-        loadImage(avatarURL).then(avatarImage => {
-            // Generate 4 random color index
-            let randomColorIndex = new Set()
-            const getRandom = () => { return Math.floor(Math.random() * colors.length) };
-            randomColorIndex.add(getRandom());
-            while (randomColorIndex.size < 4) {
-                randomColorIndex.add(getRandom());
-            }
-            randomColorIndex = Array.from(randomColorIndex);
+//         loadImage(avatarURL).then(avatarImage => {
+//             // Generate 4 random color index
+//             let randomColorIndex = new Set()
+//             const getRandom = () => { return Math.floor(Math.random() * colors.length) };
+//             randomColorIndex.add(getRandom());
+//             while (randomColorIndex.size < 4) {
+//                 randomColorIndex.add(getRandom());
+//             }
+//             randomColorIndex = Array.from(randomColorIndex);
 
-            // Register fonts
-            registerFont('./assets/fonts/code2000.ttf', { family: 'CODE2000' })
-            registerFont('./assets/fonts/Impacted2.ttf', { family: 'Impacted2' })
+//             // Register fonts
+//             registerFont('./assets/fonts/code2000.ttf', { family: 'CODE2000' })
+//             registerFont('./assets/fonts/Impacted2.ttf', { family: 'Impacted2' })
 
-            // Banner Image
-            const width = image.width;
-            const height = image.height;
+//             // Banner Image
+//             const width = image.width;
+//             const height = image.height;
 
-            // create canvas
-            const canvas = createCanvas(width, height);
-            const context = canvas.getContext('2d');
+//             // create canvas
+//             const canvas = createCanvas(width, height);
+//             const context = canvas.getContext('2d');
 
-            // Draw Banner Image
-            context.drawImage(image, 0, 0, width, height);
+//             // Draw Banner Image
+//             context.drawImage(image, 0, 0, width, height);
 
-            context.font = 'bold 50px "Calibri"';
-            const text1Width = canvas.context.measureText(upper).width;
-            context.fillStyle = colors[randomColorIndex[0]];
-            context.fillText(upper, parseInt((width - text1Width) / 2), 100);
-
-
-            // Styling of the text under the avatar circle
-            context.font = 'bold 40px "CODE2000"';
-            context.textAlign = 'left';
-            context.textBaseline = 'top';
-            const username = memberObj.username;
-            // console.log(username);
-            const textWidth = context.measureText(username).width;
-
-            context.fillStyle = colors[randomColorIndex[1]];
-            context.fillText(username, parseInt((width - textWidth) / 2), 320);
-
-            context.fillStyle = colors[randomColorIndex[2]];
-            context.font = 'bold 50px Impacted2';
-            const greetingWidth = context.measureText(tagline).width;
-            context.fillText(tagline, parseInt((width - greetingWidth) / 2), 370);
+//             context.font = 'bold 50px "Calibri"';
+//             const text1Width = canvas.context.measureText(upper).width;
+//             context.fillStyle = colors[randomColorIndex[0]];
+//             context.fillText(upper, parseInt((width - text1Width) / 2), 100);
 
 
-            // Draw the circle around the avatar
-            context.beginPath();
-            const centerX = parseInt(width / 2);
-            const centerY = parseInt(height / 2);
-            const radius = 95;
-            const startAngle = 0;
-            const endAngle = Math.PI * 2;
-            context.arc(centerX, centerY, radius, startAngle, endAngle);
-            context.closePath();
-            context.clip();
+//             // Styling of the text under the avatar circle
+//             context.font = 'bold 40px "CODE2000"';
+//             context.textAlign = 'left';
+//             context.textBaseline = 'top';
+//             const username = memberObj.username;
+//             // console.log(username);
+//             const textWidth = context.measureText(username).width;
 
-            // Draw the avatar image into the circle
-            const avatarImageWidth = avatarImage.width;
-            const avatarImageHeight = avatarImage.height;
-            // console.log(avatarImageWidth, avatarImageHeight);
-            context.drawImage(avatarImage, centerX - 95, centerY - 95, avatarImageWidth * .75, avatarImageHeight * .75);
+//             context.fillStyle = colors[randomColorIndex[1]];
+//             context.fillText(username, parseInt((width - textWidth) / 2), 320);
 
-            //Stroke of the circle
-            context.strokeStyle = colors[randomColorIndex[3]];
-            context.lineWidth = 12;
-            context.stroke();
-            context.restore();
+//             context.fillStyle = colors[randomColorIndex[2]];
+//             context.font = 'bold 50px Impacted2';
+//             const greetingWidth = context.measureText(tagline).width;
+//             context.fillText(tagline, parseInt((width - greetingWidth) / 2), 370);
 
-            // the actual constructed image
-            const buffer = canvas.toBuffer('image/png');
-            try {
-                const filePath = './assets/images/bannerWithAvatar.png';
 
-                // save the buffer to a image file
-                fs.writeFileSync(filePath, buffer);
+//             // Draw the circle around the avatar
+//             context.beginPath();
+//             const centerX = parseInt(width / 2);
+//             const centerY = parseInt(height / 2);
+//             const radius = 95;
+//             const startAngle = 0;
+//             const endAngle = Math.PI * 2;
+//             context.arc(centerX, centerY, radius, startAngle, endAngle);
+//             context.closePath();
+//             context.clip();
 
-                const attachments = new MessageAttachment(filePath);
-                let message = `Huh! ${username} has just left us`;
+//             // Draw the avatar image into the circle
+//             const avatarImageWidth = avatarImage.width;
+//             const avatarImageHeight = avatarImage.height;
+//             // console.log(avatarImageWidth, avatarImageHeight);
+//             context.drawImage(avatarImage, centerX - 95, centerY - 95, avatarImageWidth * .75, avatarImageHeight * .75);
 
-                if (upper.toLowerCase() == 'welcome')
-                    message = `For detailed guide visit <#974719552929796108>.`;
+//             //Stroke of the circle
+//             context.strokeStyle = colors[randomColorIndex[3]];
+//             context.lineWidth = 12;
+//             context.stroke();
+//             context.restore();
 
-                channel.send({ files: [attachments], content: message });
-                return true;
-            }
-            catch (e) { return false; }
-        })
-    });
-}
+//             // the actual constructed image
+//             const buffer = canvas.toBuffer('image/png');
+//             try {
+//                 const filePath = './assets/images/bannerWithAvatar.png';
+
+//                 // save the buffer to a image file
+//                 fs.writeFileSync(filePath, buffer);
+
+//                 const attachments = new MessageAttachment(filePath);
+//                 let message = `Huh! ${username} has just left us`;
+
+//                 if (upper.toLowerCase() == 'welcome')
+//                     message = `For detailed guide visit <#974719552929796108>.`;
+
+//                 channel.send({ files: [attachments], content: message });
+//                 return true;
+//             }
+//             catch (e) { return false; }
+//         })
+//     });
+// }
 
 // Adding a role while joining the server
 function roleManager(member, theRole, addRole = true, isId = false) {
