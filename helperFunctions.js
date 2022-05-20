@@ -216,4 +216,5 @@ function roleManager(member, theRole, addRole = true, isId = false) {
 }
 
 
-module.exports = { sendMessage, messageHandler, fetchAllMessages, deleteMessages, constructImageAndSend, roleManager }
+// module.exports = { sendMessage, messageHandler, fetchAllMessages, deleteMessages, constructImageAndSend, roleManager }
+module.exports = { sendMessage, messageHandler, fetchAllMessages, deleteMessages, roleManager }
