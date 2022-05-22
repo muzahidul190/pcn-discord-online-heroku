@@ -13,7 +13,7 @@ module.exports = client => {
     client.on('guildMemberAdd', (member) => updateMember(member.guild));
     client.on('guildMemberRemove', (member) => updateMember(member.guild));
 
-    const guild = client.guilds.cache.get(guildId);
+    const guild = client.guilds.cache.get(process.env.guildId);
     updateMember(guild);
 
 }
