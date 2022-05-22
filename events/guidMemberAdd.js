@@ -10,5 +10,7 @@ module.exports = {
         }
         constructImageAndSend(member.user, channel);
         roleManager(member, "Select Your Roles", true);
+        member.send(`Here is a tutorial on setting up profile. You can follow this if you face any problem or can't understand how to get self-assignable roles.
+        https://youtu.be/6SUq1dvL-XI`);
     }
 }
