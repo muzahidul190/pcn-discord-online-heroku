@@ -6,7 +6,7 @@ const COMMAND_CHANNEL = "975479301342367774";
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('sendmsg')
-        .setDescription('Sends a message to a channel!')
+        .setDescription('Sends a message to a channel if the command user is a moderator!')
         .addStringOption(option =>
             option.setName('channel')
                 .setDescription('Channel to send message!')
@@ -19,7 +19,7 @@ module.exports = {
         ),
     async execute(interaction) {
         if (interaction.channel.id !== COMMAND_CHANNEL) {
-            interaction.reply({ content: `You don't have permission to send messages to ${interaction.member.channel}.`, ephemeral: true });
+            interaction.reply({ content: `You can't send message. You need to be a moderator to use this command`, ephemeral: true });
             return
         }
         const channel = interaction.options.get('channel').value.replace(/<#|>/gm, '');
