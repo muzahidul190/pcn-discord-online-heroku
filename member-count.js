@@ -6,7 +6,10 @@ module.exports = client => {
 
     const updateMember = (guild) => {
         const channel = guild.channels.cache.get(channelId);
-        channel.setName(`Members: 👤 ${guild.memberCount.toLocaleString()}`);
+        const mem = guild.memberCount;
+        const botMem = guild.members.cache.filter(m => m.user.bot).size;
+        const organicMember = eval(mem - botMem);
+        channel.setName(`Members: 👤 ${organicMember}`);
     }
 
     client.on('guildMemberAdd', (member) => updateMember(member.guild));
