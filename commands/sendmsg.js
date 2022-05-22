@@ -1,6 +1,8 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const { Permissions } = require('discord.js');
 
+const COMMAND_CHANNEL = "975479301342367774";
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('sendmsg')
@@ -16,7 +18,7 @@ module.exports = {
                 .setRequired(true)
         ),
     async execute(interaction) {
-        if (!interaction.member.permissions.has(Permissions.FLAGS.SEND_MESSAGES)) {
+        if (interaction.channel.id !== COMMAND_CHANNEL) {
             interaction.reply({ content: `You don't have permission to send messages to ${interaction.member.channel}.`, ephemeral: true });
             return
         }
