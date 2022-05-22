@@ -1,4 +1,6 @@
 const { roleManager, constructImageAndSend } = require('../helperFunctions');
+//Codes for member count
+const memberCount = require('../member-count.js');
 
 module.exports = {
     name: 'guildMemberAdd',
@@ -10,5 +12,8 @@ module.exports = {
         }
         constructImageAndSend(member.user, channel);
         roleManager(member, "Select Your Roles", true);
+
+        
+        updateMember(member.guild);
     }
 }
