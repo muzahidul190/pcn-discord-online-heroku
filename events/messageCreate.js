@@ -10,7 +10,11 @@ module.exports = {
             return;
         };
         console.log(`Message from ${message.author.username}: ${message.content}`);
+        if(message.channel.type === 'DM'){
+            message.author.send(`Oops...I'm still getting developed. Please try again later. You may get something amazing reply then 🥱`);
+            return;
+        }
+        
         messageHandler(message);
-        console.log(`${message.member.user.username} in #${message.channel.name} triggered an message.`);
     },
 };
