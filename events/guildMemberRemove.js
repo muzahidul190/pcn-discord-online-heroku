@@ -3,7 +3,7 @@ const { constructImageAndSend } = require('../helperFunctions');
 module.exports = {
     name: 'guildMemberRemove',
     async execute(member) {
-        const guild = client.guilds.cache.get(process.env.guildId);
+        const guild = member.guilds.cache.get(process.env.guildId);
         const channelId = "965667610903597139";
         const channel = guild.channels.cache.get(channelId);
         if (!channel) {
