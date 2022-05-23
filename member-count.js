@@ -9,7 +9,7 @@ module.exports = client => {
         const mem = guild.memberCount;
         const botMem = guild.members.cache.filter(m => m.user.bot).size;
         const organicMember = eval(mem - botMem);
-        channel.setName(`Members: 👥 ${organicMember}`);
+        channel.setName(`👥┋Members: ${organicMember}`);
     }
 
     client.on('guildMemberAdd', (member) => updateMember(member.guild));
