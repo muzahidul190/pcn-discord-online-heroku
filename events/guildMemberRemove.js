@@ -3,7 +3,8 @@ const { constructImageAndSend } = require('../helperFunctions');
 module.exports = {
     name: 'guildMemberRemove',
     async execute(member) {
-        const channel = member.guild.channels.cache.find(channel => channel.name === 'welcome-and-goodbyes');
+        const channelId = "965667610903597139";
+        const channel = guild.channels.cache.get(channelId);
         if (!channel) {
             console.log('Channel not found.');
             return;
