@@ -1,10 +1,12 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const { Permissions } = require('discord.js');
 
+const COMMAND_CHANNEL = "975479301342367774";
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('addreact')
-        .setDescription('Adds a reaction to a message!')
+        .setDescription('Adds a reaction to a message! Needs to be a moderator')
         .addStringOption(option =>
             option.setName('channel')
                 .setDescription('Channel to get the message!')
@@ -21,8 +23,8 @@ module.exports = {
                 .setRequired(true)
         ),
     async execute(interaction) {
-        if (!interaction.member.permissions.has(Permissions.FLAGS.ADD_REACTIONS)) {
-            interaction.reply({ content: `You don't have permission to send messages to ${interaction.member.channel}.`, ephemeral: true });
+        if (interaction.channel.id !== COMMAND_CHANNEL) {
+            interaction.reply({ content: `You can't add reaction. You need to be a moderator to use this command`, ephemeral: true });
             return
         }
         let channel = interaction.options.get('channel').value.replace(/<#|>/gm, '');
