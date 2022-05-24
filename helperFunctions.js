@@ -177,7 +177,7 @@ async function constructImageAndSend(memberObj, channel, upper = "Welcome", tagl
                 let message = `Huh! ${username} has just left us`;
 
                 if (upper.toLowerCase() == 'welcome')
-                    message = `Welcome &${username},\nFor detailed guide please visit <#974719552929796108> and follow.`;
+                    message = `Welcome <@${username.id}>,\nFor detailed guide please visit <#974719552929796108> and follow.`;
 
                 channel.send({ files: [attachments], content: message });
                 return true;
