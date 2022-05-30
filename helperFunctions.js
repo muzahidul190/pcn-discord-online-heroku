@@ -18,7 +18,8 @@ function messageHandler(message) {
     if(message.channel.id === "980787684391915520"){
         if(message.content === 'printf("contestant");'){
             const user = message.member;
-            sendMessage(message, {content: `Okay <@${message.author.id}>,\nI believe that. You are added to the Contestant team successfully.`, ephemeral: true});
+            sendMessage(message, `Okay <@${message.author.id}>,\nI believe that. You are added to the Contestant team successfully.`);
+            message.delete();
             roleManager(user, "974722363386122280", true, true);
         }
         else if(message.content.toLowerCase() === 'printf("contestant");'){
