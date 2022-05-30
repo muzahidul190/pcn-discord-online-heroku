@@ -21,7 +21,7 @@ function messageHandler(message) {
             sendMessage(message, `Okay <@${message.author.id}>,\nI believe that. You are added to the Contestant team successfully.`);
             roleManager(user, "974722363386122280", true, true);
         }else{
-            sendMessage(message, `⛔ Please don't send random text here. ⛔`)
+            sendMessage(message, `⛔ Please don't send random text here.`)
         }
     }else if (message.content.toLowerCase() === 'hello') {
         sendMessage(message, `Hi @${message.author.username}`);
