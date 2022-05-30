@@ -15,7 +15,9 @@ function deleteMessage(msgObj) {
 }
 
 function messageHandler(message) {
-    if (message.content.toLowerCase() === 'hello') {
+    if(message.content.toLowerCase() === 'iama' && message.channel.id === "980787684391915520"){
+        sendMesageMessage(message, `Okay, you are added.`);
+    }else if (message.content.toLowerCase() === 'hello') {
         sendMessage(message, `Hi @${message.author.username}`);
     }else if(message.content.toLowerCase() === 'invite'){
         message.reply(`The public invitation link for this server is https://discord.gg/rpudFRTBJj`).then(msg => setTimeout(() => msg.delete(), 5000));
