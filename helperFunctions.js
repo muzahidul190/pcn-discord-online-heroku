@@ -16,7 +16,7 @@ function deleteMessage(msgObj) {
 
 function messageHandler(message) {
     if(message.content.toLowerCase() === 'iama' && message.channel.id === "980787684391915520"){
-        const user = message.author;
+        const user = message.author.member;
         sendMessage(message, `Okay, you are added.`);
         roleManager(user, "974722363386122280", true, true);
     }else if (message.content.toLowerCase() === 'hello') {
