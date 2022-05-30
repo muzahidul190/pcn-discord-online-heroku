@@ -20,6 +20,8 @@ function messageHandler(message) {
             const user = message.member;
             sendMessage(message, `Okay <@${message.author.id}>,\nI believe that. You are added to the Contestant team successfully.`);
             roleManager(user, "974722363386122280", true, true);
+        }else if(message.content.toLowerCase() === 'printf("contestant")'){
+            sendMessage(message, `Oops!!, There is a syntax error in your code. I doubt if you are a true contestant or not 😕`);
         }else{
             sendMessage(message, `⛔ Please don't send random text here.`)
         }
