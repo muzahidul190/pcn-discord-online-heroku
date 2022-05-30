@@ -14,12 +14,16 @@ function deleteMessage(msgObj) {
     msgObj.delete();
 }
 
+function sendMessageNotReply(messageObj, content){
+    messageObj.channel.send(content);
+}
+
 function messageHandler(message) {
     if(message.channel.id === "980787684391915520"){
         if(message.content === 'printf("contestant");'){
             const user = message.member;
-            sendMessage(message, `Okay <@${message.author.id}>,\nI believe that. You are added to the Contestant team successfully.`);
-            message.delete();
+            sendMessageNotReply(message, `Okay <@${message.author.id}>,\nI believe that. You are added to the Contestant team successfully.`);
+            deleteMessage(message);
             roleManager(user, "974722363386122280", true, true);
         }
         else if(message.content.toLowerCase() === 'printf("contestant");'){
