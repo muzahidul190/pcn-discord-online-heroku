@@ -18,13 +18,16 @@ function messageHandler(message) {
     if(message.channel.id === "980787684391915520"){
         if(message.content === 'printf("contestant");'){
             const user = message.member;
-            sendMessage(message, `Okay <@${message.author.id}>,\nI believe that. You are added to the Contestant team successfully.`);
+            sendMessage(message, {content: `Okay <@${message.author.id}>,\nI believe that. You are added to the Contestant team successfully.`, ephemeral: true});
             roleManager(user, "974722363386122280", true, true);
-        }else if(message.content.toLowerCase() === 'printf("contestant");'){
+        }
+        else if(message.content.toLowerCase() === 'printf("contestant");'){
             sendMessage(message, `There is slight error your in your code. Do you remember that **C** is a *case sensitive* language?`);
-        }else if(message.content.toLowerCase() === 'printf("contestant")'){
+        }
+        else if(message.content.toLowerCase() === 'printf("contestant")'){
             sendMessage(message, `Oops!!, There is a syntax error in your code. I doubt if you are a true contestant or not 😕`);
-        }else{
+        }
+        else{
             sendMessage(message, `⛔ Please don't send random text here.`)
         }
     }else if (message.content.toLowerCase() === 'hello') {
