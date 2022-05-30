@@ -16,7 +16,7 @@ function deleteMessage(msgObj) {
 
 function messageHandler(message) {
     if(message.channel.id === "980787684391915520"){
-        if(message.content.toLowerCase() === 'printf("contestant");'){
+        if(message.content === 'printf("contestant");'){
             const user = message.member;
             sendMessage(message, `Okay <@${message.author.id}>,\nI believe that. You are added to the Contestant team successfully.`);
             roleManager(user, "974722363386122280", true, true);
