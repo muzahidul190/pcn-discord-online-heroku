@@ -15,10 +15,12 @@ function deleteMessage(msgObj) {
 }
 
 function messageHandler(message) {
-    if(message.content.toLowerCase() === 'iama' && message.channel.id === "980787684391915520"){
-        const user = message.member;
-        sendMessage(message, `Okay, you are added.`);
-        roleManager(user, "974722363386122280", true, true);
+    if(message.channel.id === "980787684391915520"){
+        if(message.content.toLowerCase() === 'printf("I am a contestant.");'){
+            const user = message.member;
+            sendMessage(message, `Okay @<${message.author.id}>, I believe that.\nYou are added to the Contestant team successfully.`);
+            roleManager(user, "974722363386122280", true, true);
+        }
     }else if (message.content.toLowerCase() === 'hello') {
         sendMessage(message, `Hi @${message.author.username}`);
     }else if(message.content.toLowerCase() === 'invite'){
