@@ -2,7 +2,7 @@ const { MessageAttachment } = require('discord.js');
 const fs = require('fs');
 const { registerFont, createCanvas, loadImage } = require('canvas');
 
-const colors = ['#00FFFF', '#FF00FF', '#fff', '#FFFF00', '#00FF00', '#FFA500',];
+const colors = ['#00FFFF', '#FF00FF', '#fff', '#FFFF00', '#00FF00', '#FFA500'];
 
 function sendMessage(msgObj, message) {
     msgObj.reply(message)
