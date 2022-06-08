@@ -12,7 +12,7 @@ module.exports = {
     async execute(reaction, user) {
         const member = await reaction.message.guild.members.fetch(user.id);
 
-        if (reaction.emoji.name === 'pcn' && reaction.message.id === MessageIds.SaveRoles) {
+        if (reaction.emoji.name === 'pcn-square' && reaction.message.id === MessageIds.SaveRoles) {
             roleManager(member, 'Select Your Roles', false);
             return;
         }
