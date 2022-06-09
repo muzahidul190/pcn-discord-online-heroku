@@ -33,7 +33,7 @@ function messageHandler(message) {
             sendMessage(message, `Oops!!, There is a syntax error in your code. I doubt if you are a true contestant or not 😕`);
         }
         else{
-            const regex = /\{|\}/g
+            const regex = /\{|\}|printf/g
             if (message.content.match(regex)) {
                 sendMessage(message, 'Please read this message more carefully to become a contestant! \nMessage Link: https://discord.com/channels/965667610903597136/974719552929796108/980830360633999410 ')
                 return;
