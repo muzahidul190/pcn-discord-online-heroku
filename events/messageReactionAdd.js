@@ -14,6 +14,8 @@ module.exports = {
 
         if (reaction.emoji.name === 'pcn_square' && reaction.message.id === MessageIds.SaveRoles) {
             roleManager(member, 'Select Your Roles', false);
+            const discussionChannel = member.guild.channels.cache.find(channel => channel.id === '973083683936407562');
+            discussionChannel.send(`Congratulations <@${user.id}>,\nYou've successfully set up your profile 🎉🎉🎉`);
             return;
         }
         // When a reaction is received, check if the structure is partial
