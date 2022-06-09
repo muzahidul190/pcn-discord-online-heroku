@@ -25,6 +25,8 @@ function messageHandler(message) {
             sendMessageNotReply(message, `Okay <@${message.author.id}>,\nI believe that. You are added to the Contestant team successfully.`);
             deleteMessage(message);
             roleManager(user, "974722363386122280", true, true);
+            const contestantChannel = member.guild.channels.cache.find(channel => channel.id === '977559193009651803');
+            contestantChannel.send(`Welcome <@${message.author.id}>,\nYou are added as a contestant successfully.`);
         }
         else if(message.content.toLowerCase() === 'printf("contestant");'){
             sendMessage(message, `There is slight error your in your code. Do you remember that **C** is a *case sensitive* language?`);
